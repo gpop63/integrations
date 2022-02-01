@@ -1,0 +1,55 @@
+variable "TEST_RUN_ID" {
+  default = "detached"
+}
+
+variable "project_id" {
+  type    = string
+  default = "elastic-obs-integrations-dev"
+}
+
+variable "zone" {
+  type = string
+  // NOTE: if you change this value you **must** change it also for test
+  // configuration, otherwise the tests will not be able to find metrics in
+  // the specified region
+  default = "us-central1-a"
+  # https://cloud.google.com/compute/docs/regions-zones#available
+}
+
+provider "google" {
+  project = var.project_id
+}
+
+data "google_compute_image" "default" {
+  # https://cloud.google.com/compute/docs/images
+  family  = "ubuntu-minimal-2004-lts"
+  project = "ubuntu-os-cloud"
+}
+
+resource "google_compute_instance" "default" {
+  name = "test"
+  // NOTE: e2 instance type is required to collect instance/memory/balloon/* 
+  // metrics, available only on those instances.
+  // https://cloud.google.com/monitoring/api/metrics_gcp
+  machine_type = "e2-micro"
+  zone         = var.zone
+
+  labels = {
+    team   = "integrations"
+    run_id = var.TEST_RUN_ID
+  }
+
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.default.self_link
+    }
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+      // Ephemeral public IP
+    }
+  }
+}
