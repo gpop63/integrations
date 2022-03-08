@@ -1,0 +1,7 @@
+vars:
+  project_id: '{{GCP_PROJECT_ID}}'
+  credentials_json: '{{{GOOGLE_CREDENTIALS}}}'
+data_stream:
+  vars:
+    period: 60s
+    zone: us-west4-b
