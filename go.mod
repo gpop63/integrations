@@ -8,7 +8,7 @@ require (
 	github.com/elastic/package-registry v1.7.0
 	github.com/magefile/mage v1.11.0
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.5
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -140,7 +140,7 @@ require (
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 	helm.sh/helm/v3 v3.8.0 // indirect
 	howett.net/plist v0.0.0-20201203080718-1454fab16a06 // indirect
 	k8s.io/api v0.23.3 // indirect
