@@ -133,5 +133,15 @@ policy_templates:
         title: Collect GCP Firestore Metrics
         description: Collect GCP Firestore Metrics
         input_group: metrics
+  - name: loadbalancing
+    title: Google Cloud Platform (GCP) Loadbalancing metrics
+    description: Collect loadbalancing metrics from Google Cloud Platform (GCP) with Elastic Agent
+    data_streams:
+      - loadbalancing
+    inputs:
+      - type: gcp/metrics
+        title: Collect GCP Loadbalancing Metrics
+        description: Collect GCP Loadbalancing Metrics
+        input_group: metrics
 owner:
   github: elastic/security-external-integrations
